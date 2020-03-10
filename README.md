@@ -1,0 +1,2 @@
+# JerseySample
+JerseyでRESTfulAPIのサンプル(mavenプロジェクト)

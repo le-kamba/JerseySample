@@ -40,4 +40,23 @@ public class EmployeeResource {
         builder.path(String.valueOf(employee.getId()));
         return Response.created(builder.build()).build();
     }
+
+    @PUT
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response updateEmployee(Employee employee) {
+        EmployeeRepository.getInstance().update(employee.getId(), employee.getFirstName());
+        // 新規作成した場合はcreatedを返す必要があるが、このサンプルではエラーとするため、常にokを返す
+        return Response.ok().build();
+    }
+
+    @DELETE
+    @Path("/{id}")
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public Response deleteEmployee(@PathParam("id") int id) {
+        EmployeeRepository.getInstance().delete(id);
+        // Entityの状態を返す場合はokを返す。
+        // 受け付けたが処理が終わっていない場合は(キューに乗っただけなど)acceptedを返す
+        // このサンプルでは削除が完了して該当コンテントがなくなったことだけ返す
+        return Response.noContent().build();
+    }
 }

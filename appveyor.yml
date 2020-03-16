@@ -3,14 +3,14 @@ branches:
   only:
   - feature/for_ci_test
 # Build on Ubuntu 18.04. Always define the image explicitly because defaults change over time.
-image: macOS
+image: ubuntu
 
 stack: jdk 11
 
 install: 
-- sh: brew update
-- sh: brew -v
-- sh: brew install maven
+- sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
+- sh: sudo apt-get update
+- sh: sudo apt-get install adoptopenjdk-11-installer 
 - sh: mvn -v
 
 before_build:

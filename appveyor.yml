@@ -14,7 +14,7 @@ environment:
 stack: jdk 11
 
 install: 
-- sh: breaw update
+- sh: brew update
 - sh: brew -v
 - sh: brew install maven
 - sh: mvn -v

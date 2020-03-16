@@ -11,16 +11,17 @@ install:
 - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 - sh: sudo apt-get update
 - sh: sudo apt-get install -y adoptopenjdk-11-installer
+- sh: update-alternatives --list java
 - sh: mvn -v
 
 before_build:
 - java --version
 
 build_script:
-- mvn clean 
+- mvn clean package -DskipTests
 
 test_script:
-- mvn install
+- mvn install verify
 
 artifacts:
   # Collect all JARs that have been built and upload them to the CI server. Can be downloaded via

@@ -10,7 +10,7 @@ stack: jdk 11
 install: 
 - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 - sh: sudo apt-get update
-- sh: sudo apt-get install adoptopenjdk-11-installer --force-yes
+- sh: sudo apt-get install adoptopenjdk-11-installer --allow
 - sh: mvn -v
 
 before_build:

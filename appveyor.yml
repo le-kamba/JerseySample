@@ -3,7 +3,7 @@ branches:
   only:
   - feature/for_ci_test
 # Build on Ubuntu 18.04. Always define the image explicitly because defaults change over time.
-image: ubuntu-18.04-amd64
+image: ubuntu
 
 environment:
   # Increase the minimum and maximum Java heap size by defining the environment variable _JAVA_OPTIONS.
@@ -13,7 +13,7 @@ environment:
 
 install:
   # Use OpenJDK 11.
-  - sudo java_select adoptopenjdk-11-hotspot-amd64
+  - sudo java_select adoptopenjdk-11
   # Define variable UBUNTU_CODENAME with Ubuntu code name (xenial, bionic etc.).
   - export UBUNTU_CODENAME=$(lsb_release -c -s)
 

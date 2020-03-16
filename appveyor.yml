@@ -14,7 +14,7 @@ environment:
 stack: jdk 11
 
 install: 
-- sh: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- sh: breaw update
 - sh: brew -v
 - sh: brew install maven
 - sh: mvn -v

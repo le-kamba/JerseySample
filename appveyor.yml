@@ -11,8 +11,9 @@ install:
 - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 - sh: sudo apt-get update
 - sh: sudo apt-get install -y adoptopenjdk-11-installer
-- sh: update-alternatives --list java
-- sh: sudo update-alternatives --install /usr/lib/jvm/adoptopenjdk-11-jdk-hotspot/bin/java 1
+- sh: update-alternatives -l
+- sh: sudo export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
+- sh: export PATH=${PATH}:${JAVA_HOME}/bin
 - sh: mvn -v
 
 before_build:

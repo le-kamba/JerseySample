@@ -10,12 +10,10 @@ stack: jdk 11
 install: 
 - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 - sh: sudo apt-get update
-- sh: sudo apt-get install -y adoptopenjdk-11-installer
+- sh: sudo apt-get install -y adoptopenjdk-11-jdk-hotspot-installer amd64
+- sh: sudo apt install adoptopenjdk-11-jdk-hotspot-set-default amd64
 - sh: update-java-alternatives -l
-- sh: sudo export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
-- sh: echo $JAVA_HOME
-- sh: sudo export PATH=${PATH}:${JAVA_HOME}/bin
-- sh: echo $PATH
+#- sh: sudo update-alternatives --install リンクのパス config名 コマンドの実パス 優先度
 - sh: mvn -v
 
 before_build:

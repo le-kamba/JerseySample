@@ -13,11 +13,10 @@ install:
 - sh: sudo apt-get install -y adoptopenjdk-11-jdk-hotspot-installer
 - sh: sudo apt install adoptopenjdk-11-jdk-hotspot-set-default
 - sh: update-java-alternatives -l
-#- sh: sudo update-alternatives --install リンクのパス config名 コマンドの実パス 優先度
-- sh: mvn -v
 
 before_build:
 - java --version
+- mvn -v
 
 build_script:
 - mvn clean package -DskipTests

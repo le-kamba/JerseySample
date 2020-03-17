@@ -5,22 +5,17 @@ branches:
 # Build on Ubuntu 18.04. Always define the image explicitly because defaults change over time.
 image: ubuntu
 
-#stack: jdk 11
-
 install: 
 - sh: sudo add-apt-repository --yes ppa:rpardini/adoptopenjdk
 - sh: sudo apt-get update
 - sh: sudo apt-get install -y adoptopenjdk-11-jdk-hotspot-installer
 - sh: sudo apt install adoptopenjdk-11-jdk-hotspot-set-default
-#- sh: update-java-alternatives -l
-#update-java-alternatives
 #/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
 - sh: export JAVA_HOME=/usr/lib/jvm/adoptopenjdk-11-jdk-hotspot
 - sh: echo $JAVA_HOME
 - sh: export PATH=${PATH}
 
 before_build:
-- java --version
 - mvn -v
 
 build_script:
@@ -32,7 +27,7 @@ test_script:
 artifacts:
   # Collect all JARs that have been built and upload them to the CI server. Can be downloaded via
   # the UI. If you want to keep them longer than 6 months, deploy to Artifactory (not shown).
-  - path: "target/*.?ar"
+  - path: "**/target/*.?ar"
 
 # Use integers as build versions (1, 2, 3, …) instead of 1.0.X.
 version: "0.0.1.{build}"

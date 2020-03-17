@@ -12,7 +12,7 @@ install:
 - sh: sudo apt-get update
 - sh: sudo apt-get install -y adoptopenjdk-11-jdk-hotspot-installer
 - sh: sudo apt install adoptopenjdk-11-jdk-hotspot-set-default
-#- sh: update-java-alternatives -l
+- sh: update-java-alternatives -l
 
 before_build:
 - java --version

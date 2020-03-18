@@ -3,29 +3,24 @@ version: 2.1
 orbs:
   maven: circleci/maven@1.0.0
   
-# jobs:
-#   build:
-#     docker:
-#       # specify the version you desire here
-#       - image: circleci/openjdk:11.0.6-jdk
-#     steps:
-#       - checkout
-#       - run: 
-#           command: mvn clean test 
-#       - store_artifacts:
-#           path: "**/target/*.ar"
-#       - store_test_results:
-#           path: "**/target/TEST**.xml"
-
-# executors:
-#   my-executor:
-#     parameters:
-#       tag: '11.0.6'
+jobs:
+  build:
+    docker:
+      - image: 'cimg/openjdk:11.0.6'
+    steps:
+      - checkout
+      - run: 
+          command: mvn clean test 
+      - store_artifacts:
+          path: "**/target/*.ar"
+      - store_test_results:
+          path: "**/target/TEST**.xml"
 
 workflows:
   version: 2
   maven_test:
     jobs:
-      - maven/test:
-          executor: default
-            tag: "11.0.6"
+      - build:
+      	  filters:
+      		branches:
+      			only: feature/for_circleci

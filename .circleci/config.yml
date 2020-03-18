@@ -16,9 +16,11 @@ orbs:
 #           path: "**/target/*.ar"
 #       - store_test_results:
 #           path: "**/target/TEST**.xml"
+
 executors:
   my-executor:
-    tag: '11.0.6'
+    parameters:
+      tag: "11.0.6"
 
 workflows:
   version: 2

@@ -1,10 +1,25 @@
 version: 2.1
 
-orbs:
-  maven: circleci/maven@1.0.0
-
+jobs:
+  build:
+  	docker:
+      # specify the version you desire here
+      - image: circleci/openjdk:11-jdk
+  	steps:
+  		- checkout
+  		- run: 
+  		    command: mvn clean test
+  		- store_artifacts:
+  			path: "**/target/*.ar"
+  	    - store_test_results:
+  	    	path: "**/target/TEST**.xml"
+  			
 workflows:
+  version: 2
   maven_test:
     jobs:
-      - maven/test
-
+      - build:
+      	  filters:
+      	  	 branches:
+      	  	 	only: feature/for_circleci
+      

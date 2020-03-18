@@ -7,8 +7,7 @@ workflows:
   maven_test:
     jobs:
       - maven/test
-          executor:
-          	tag: '11.0.6'
+          executor: '11.0.6'
       	  filters:
       	  	 branches:
       	  	 	only: feature/for_circleci

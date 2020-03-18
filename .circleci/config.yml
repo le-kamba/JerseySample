@@ -21,6 +21,6 @@ workflows:
   maven_test:
     jobs:
       - build:
-      	  filters:
-      		branches:
-      			only: feature/for_circleci
+            filters:
+              branches:
+                  only: feature/for_circleci

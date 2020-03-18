@@ -7,18 +7,18 @@ jobs:
       - image: circleci/openjdk:11-jdk
     steps:
       - checkout
-  	  - run: 
-  	      command: mvn clean test 
+      - run: 
+          command: mvn clean test 
       - store_artifacts:
           path: "**/target/*.ar"
       - store_test_results:
           path: "**/target/TEST**.xml"
-  			
+        
 workflows:
   version: 2
   maven_test:
     jobs:
       - build:
-      	  filters:
-      	  	 branches:
-      	  	 	only: feature/for_circleci
+          filters:
+             branches:
+               only: feature/for_circleci

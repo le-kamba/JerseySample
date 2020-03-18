@@ -17,16 +17,10 @@ orbs:
 #       - store_test_results:
 #           path: "**/target/TEST**.xml"
 
-jobs:
-  test:
-    executor: 11.0.6
-    command: mvn clean test
-
 workflows:
   version: 2
   maven_test:
     jobs:
-      - test:
-          filters:
-             branches:
-               only: feature/for_circleci
+      - maven/test:
+          executor: 
+            tag: '11.0.6'

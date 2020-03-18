@@ -1,8 +1,5 @@
 version: 2.1
 
-# orbs:
-#   maven: circleci/maven@1.0.0
-  
 jobs:
   build:
     docker:
@@ -12,9 +9,11 @@ jobs:
       - run: 
           command: mvn clean install 
       - store_artifacts:
-          path: "**/target/*.?ar"
+          path: '**/target/*.jar'
+      - store_artifacts:
+          path: '**/target/*.war'
       - store_test_results:
-          path: "**/target/surefire-reports/TEST**.xml"
+          path: target/surefire-reports
 
 workflows:
   version: 2

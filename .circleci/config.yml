@@ -16,10 +16,13 @@ orbs:
 #           path: "**/target/*.ar"
 #       - store_test_results:
 #           path: "**/target/TEST**.xml"
+executors:
+  my-executor:
+  	tag: '11.0.6'
 
 workflows:
   version: 2
   maven_test:
     jobs:
       - maven/test:
-          executor: '11.0.6'
+          executor: my-executor

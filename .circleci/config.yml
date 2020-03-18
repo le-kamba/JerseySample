@@ -8,7 +8,6 @@ workflows:
     jobs:
       - maven/test
           executor: '11.0.6'
-      	  filters:
-      	  	 branches:
-      	  	 	only: feature/for_circleci
-      
+      filters:
+        branches:
+      	  only: feature/for_circleci

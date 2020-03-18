@@ -7,13 +7,14 @@ jobs:
     steps:
       - checkout
       - run: 
+          name: Build and test
           command: mvn clean install 
       - store_artifacts:
           path: repository/target/repository.jar'
       - store_artifacts:
           path: serverapi/target/serverapi.war
       - run:
-            name: Save test results
+          name: Save test results
           command: |
             mkdir -p ~/test-results/junit/
             find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;

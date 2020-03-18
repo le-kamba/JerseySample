@@ -10,7 +10,7 @@ jobs:
           name: Build and test
           command: mvn clean install 
       - store_artifacts:
-          path: repository/target/repository.jar'
+          path: repository/target/repository.jar
       - store_artifacts:
           path: serverapi/target/serverapi.war
       - run:

@@ -17,14 +17,16 @@ orbs:
 #       - store_test_results:
 #           path: "**/target/TEST**.xml"
 
-executors:
-  my-executor:
-    parameters:
-      tag: 11.0.6
+# executors:
+#   my-executor:
+#     parameters:
+#       tag: '11.0.6'
 
 workflows:
   version: 2
   maven_test:
     jobs:
       - maven/test:
-          executor: my-executor
+          executor: 
+            name: default
+            tag: "11.0.6"

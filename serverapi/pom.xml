@@ -11,7 +11,11 @@
 
     <artifactId>serverapi</artifactId>
     <packaging>war</packaging>
-
+  
+      <build>
+        <finalName>serverapi</finalName>
+    </build>
+    
     <dependencyManagement>
         <dependencies>
             <dependency>

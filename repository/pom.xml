@@ -12,4 +12,7 @@
     <artifactId>repository</artifactId>
     <packaging>jar</packaging>
 
+    <build>
+        <finalName>repository</finalName>
+    </build>
 </project>

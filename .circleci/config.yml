@@ -1,7 +1,7 @@
 version: 2.1
 
-orbs:
-  maven: circleci/maven@1.0.0
+# orbs:
+#   maven: circleci/maven@1.0.0
   
 jobs:
   build:
@@ -10,11 +10,11 @@ jobs:
     steps:
       - checkout
       - run: 
-          command: mvn clean test 
+          command: mvn clean install 
       - store_artifacts:
-          path: "**/target/*.ar"
+          path: "**/target/*.?ar"
       - store_test_results:
-          path: "**/target/TEST**.xml"
+          path: "**/target/surefire-reports/TEST**.xml"
 
 workflows:
   version: 2

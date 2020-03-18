@@ -5,14 +5,14 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:11-jdk
-  	steps:
-  		- checkout
-  		- run: 
-  		    command: mvn clean test
-  		- store_artifacts:
-  			path: "**/target/*.ar"
-  	    - store_test_results:
-  	    	path: "**/target/TEST**.xml"
+    steps:
+  	  - checkout
+  	  - run: 
+  	      command: mvn clean test 
+      - store_artifacts:
+          path: "**/target/*.ar"
+      - store_test_results:
+          path: "**/target/TEST**.xml"
   			
 workflows:
   version: 2
@@ -22,4 +22,3 @@ workflows:
       	  filters:
       	  	 branches:
       	  	 	only: feature/for_circleci
-      

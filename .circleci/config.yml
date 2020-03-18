@@ -18,7 +18,7 @@ orbs:
 #           path: "**/target/TEST**.xml"
 executors:
   my-executor:
-  	tag: '11.0.6'
+    tag: '11.0.6'
 
 workflows:
   version: 2

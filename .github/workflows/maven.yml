@@ -21,6 +21,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean install -DskipTests
     - name: Test with Maven
+      if: success()
       run: mvn test -Dmaven.test.failure.ignore=true site -DgenerateReports=false -Daggregate=true surefire-report:report
     - name: Archive JAR
       if: success()

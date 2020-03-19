@@ -22,7 +22,8 @@ jobs:
       run: mvn clean install -DskipTests
     - name: Test with Maven
       if: success()
-      run: mvn test -Dmaven.test.failure.ignore=true site -DgenerateReports=false -Daggregate=true surefire-report:report
+      run: mvn test -Dmaven.test.failure.ignore=true site -DgenerateReports=false 
+      run: mvn surefire-report:report -Daggregate=true 
     - name: Archive JAR
       if: success()
       uses: actions/upload-artifact@v1

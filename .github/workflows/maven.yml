@@ -19,10 +19,27 @@ jobs:
       with:
         java-version: '11.0.6'
     - name: Build with Maven
-      run: mvn clean install
-    - name: Archive JAR and WAR
+      run: mvn clean \
+    test -Dmaven.test.failure.ignore=true \
+    site -DgenerateReports=false \
+    -Daggregate=true \
+    surefire-report:report
+    - name: Archive JAR
       if: success()
       uses: actions/upload-artifact@v1
       with: 
-        name: artifacts
-        path: "**/target/**.?.ar"
+        name: repository
+        path: repository/target/repository.jar
+    - name: Archive WAR
+      if: success()
+      uses: actions/upload-artifact@v1
+      with: 
+        name: serverapi
+        path: serverapi/target/serverapi.war
+    - name: Archive test resuls
+      if: always()
+      uses: actions/upload-artifact@v1
+      with: 
+        name: repository
+        path: target/site
+

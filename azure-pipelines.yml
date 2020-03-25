@@ -34,11 +34,11 @@ steps:
       SourceFolder: '$(system.defaultworkingdirectory)'
       Contents: '**/target/*.?ar'
       TargetFolder: '$(build.artifactstagingdirectory)'
-    condition: succeeded()
+    condition: succeededOrFaild()
   
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:
       PathtoPublish: '$(build.artifactstagingdirectory)'
-    condition: succeeded()
+    condition: succeededOrFaild()
     

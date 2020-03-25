@@ -38,4 +38,9 @@ public class MyResourceTest extends JerseyTest {
         String content = response.readEntity(String.class);
         assertThat(content).isEqualTo("Got it!\n\n");
     }
+    
+    @Test
+    public void test_Fail(){
+        assertThat(false).isTrue();
+    }
 }

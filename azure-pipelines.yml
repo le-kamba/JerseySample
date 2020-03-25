@@ -1,0 +1,43 @@
+# Maven
+# Build your Java project and run tests with Apache Maven.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/java
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: hanabi1224.adopt-openjdk-installer.adopt-openjdk-installer.adopt-openjdk-installer@1
+    displayName: 'Use AdoptOpenJDK'
+    inputs:
+      majorVersion: 11
+      useLatestOption: latest
+      jdkArchitectureOption: x64
+      jvmOption: hotspot
+      useCacheOption: true
+  
+  - task: Maven@3
+    displayName: 'Maven package'
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'package'
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**/target/*.?ar'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeeded()
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeeded()

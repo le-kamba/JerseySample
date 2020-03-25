@@ -41,6 +41,6 @@ public class MyResourceTest extends JerseyTest {
 
     @Test
     public void test_Fail(){
-        assertThat(false).isTrue();
+        assertThat(false).isFalse(); // 失敗させたいテスト用
     }
 }

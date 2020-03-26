@@ -21,13 +21,13 @@ jobs:
     - name: Build and Test with Maven
       run: mvn clean install
     - name: Archive JAR
-      if: success()
+      if: always()
       uses: actions/upload-artifact@v1
       with: 
         name: repository
         path: repository/target/repository.jar
     - name: Archive WAR
-      if: success()
+      if: always()
       uses: actions/upload-artifact@v1
       with: 
         name: serverapi
@@ -36,7 +36,7 @@ jobs:
       if: always()
       run: |
         mkdir -p ~/test-results/junit/
-            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
+        find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
     - name: Archive test resuls
       if: always()
       uses: actions/upload-artifact@v1

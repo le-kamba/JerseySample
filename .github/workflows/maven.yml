@@ -45,5 +45,5 @@ jobs:
       uses: actions/upload-artifact@v1
       with: 
         name: test-results
-        path: target/site
+        path: ~/test-results/junit
 

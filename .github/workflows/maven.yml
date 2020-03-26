@@ -22,8 +22,7 @@ jobs:
       run: mvn clean install -DskipTests
     - name: Test with Maven
       if: success()
-      run: |
-        mvn test -Dmaven.test.failure.ignore=true site -DgenerateReports=false surefire-report:report -Daggregate=true 
+      run: mvn install
     - name: Archive JAR
       if: success()
       uses: actions/upload-artifact@v1
@@ -36,6 +35,11 @@ jobs:
       with: 
         name: serverapi
         path: serverapi/target/serverapi.war
+    - name: Gather test results
+      if: always()
+      run: |
+        mkdir -p ~/test-results/junit/
+            find . -type f -regex ".*/target/surefire-reports/.*xml" -exec cp {} ~/test-results/junit/ \;
     - name: Archive test resuls
       if: always()
       uses: actions/upload-artifact@v1
